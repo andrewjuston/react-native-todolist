@@ -12,6 +12,7 @@ class NewsInputView extends React.Component {
                 <TextInput placeholder="Add Any Items Here!" 
                 style={styles.textInput} 
                 onChangeText={this.props.changeText}
+                ref={this.props.textInputRef}
                 />
                 <Button title="Add" color="#000000" style={styles.button} onPress={this.props.pressHandler}/>
             </View>

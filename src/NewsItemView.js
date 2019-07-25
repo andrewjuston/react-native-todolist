@@ -23,16 +23,17 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         margin: 7,
         padding: 8,
-        borderColor: '#000000',
+        borderColor: '#D3D3D3',
         borderWidth: 1.5,
         borderRadius: 15,
+        backgroundColor: '#DCDCDC'
     },
     text:{
         fontSize: 20,
     },
     button: {
-        marginRight: 15
-        
+        marginRight: 15,
+        borderRadius: 30
     }
 });
 

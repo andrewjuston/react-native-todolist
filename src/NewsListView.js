@@ -19,7 +19,8 @@ class NewsListView extends React.Component {
     onItemAdd = () => {
         if(this.state.content.trim() !== ''){
             let joined = this.state.items.concat(this.state.content);
-            this.setState({items:joined});
+            this.setState({items:joined, content:''});
+            this.textInput.clear();
         }
     }
 
@@ -27,7 +28,11 @@ class NewsListView extends React.Component {
         return (
             <View>
                 <Text style={styles.title}>To-Do List</Text>
-                <NewsInputView pressHandler = {this.onItemAdd} changeText={this.textChangeHandler}/>
+                <NewsInputView 
+                pressHandler={this.onItemAdd} 
+                changeText={this.textChangeHandler}
+                textInputRef={ input => { this.textInput = input }}
+                />
                 <FlatList 
                     data={this.state.items}
                     renderItem={
