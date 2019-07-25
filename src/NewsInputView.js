@@ -4,16 +4,16 @@ import { View, TextInput, Button, StyleSheet } from 'react-native';
 class NewsInputView extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            content: '',
-        }
     } 
 
     render() {
         return (
             <View style={styles.container}>
-                <TextInput placeholder="Add Any News Here!" style={styles.textInput} onChangeText={(text) => this.setState({content: text})}/>
-                <Button title="Add" color="#000000" style={styles.button} onPress={() => alert()}/>
+                <TextInput placeholder="Add Any Items Here!" 
+                style={styles.textInput} 
+                onChangeText={this.props.changeText}
+                />
+                <Button title="Add" color="#000000" style={styles.button} onPress={this.props.pressHandler}/>
             </View>
         );
     }
@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
         width: '70%',
         borderBottomColor: '#000000',
         borderBottomWidth: 2,
+        fontSize: 18,
     },
     button:{
         padding: '20%'

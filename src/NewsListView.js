@@ -7,20 +7,42 @@ class NewsListView extends React.Component {
     constructor(props) {
         super(props);
         this.state={
+            content:'',
             items:[]
         }
     }
 
-    onItemAdd(){
-        
+    textChangeHandler = (text) => {
+        this.setState({content: text});
+    }
+
+    onItemAdd = () => {
+        if(this.state.content.trim() !== ''){
+            let joined = this.state.items.concat(this.state.content);
+            this.setState({items:joined});
+        }
     }
 
     render() {
         return (
             <View>
-                <Text style={styles.title}>News List</Text>
-                <NewsInputView buttonPress = {this.onItemAdd}/>
-                <FlatList renderItem={NewsItemView}/>
+                <Text style={styles.title}>To-Do List</Text>
+                <NewsInputView pressHandler = {this.onItemAdd} changeText={this.textChangeHandler}/>
+                <FlatList 
+                    data={this.state.items}
+                    renderItem={
+                        ({item, index}) => 
+                        <NewsItemView 
+                        contentText={item} 
+                        index = {index}
+                        onDeleteItem = {() => {  
+                            let newArray = [...this.state.items];
+                            newArray.splice(index, 1);
+                            this.setState({items:newArray});
+                        }}
+                        />
+                    }
+                />
             </View>        
         );
     }
