@@ -24,6 +24,10 @@ class NewsListView extends React.Component {
         }
     }
 
+    inputRef = input => {
+        this.textInput = input;
+    }
+
     render() {
         return (
             <View>
@@ -31,7 +35,7 @@ class NewsListView extends React.Component {
                 <NewsInputView 
                 pressHandler={this.onItemAdd} 
                 changeText={this.textChangeHandler}
-                textInputRef={ input => { this.textInput = input }}
+                textInputRef={this.inputRef}
                 />
                 <FlatList 
                     data={this.state.items}
@@ -39,7 +43,6 @@ class NewsListView extends React.Component {
                         ({item, index}) => 
                         <NewsItemView 
                         contentText={item} 
-                        index = {index}
                         onDeleteItem = {() => {  
                             let newArray = [...this.state.items];
                             newArray.splice(index, 1);
