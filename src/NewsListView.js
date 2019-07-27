@@ -1,9 +1,10 @@
-import React from 'react';
-import { View, Text, FlatList, StyleSheet } from 'react-native';
+import React, {Component} from 'react';
+import { View, Text, FlatList, StyleSheet, Alert } from 'react-native';
 import NewsInputView from './NewsInputView';
 import NewsItemView from './NewsItemView';
+import NewsEmptyView from './NewsEmptyView';
 
-class NewsListView extends React.Component {
+class NewsListView extends Component {
     constructor(props) {
         super(props);
         this.state={
@@ -29,6 +30,7 @@ class NewsListView extends React.Component {
     }
 
     render() {
+        const {items} = this.state;
         return (
             <View>
                 <Text style={styles.title}>To-Do List</Text>
@@ -37,20 +39,34 @@ class NewsListView extends React.Component {
                 changeText={this.textChangeHandler}
                 textInputRef={this.inputRef}
                 />
-                <FlatList 
-                    data={this.state.items}
-                    renderItem={
-                        ({item, index}) => 
-                        <NewsItemView 
-                        contentText={item} 
-                        onDeleteItem = {() => {  
-                            let newArray = [...this.state.items];
-                            newArray.splice(index, 1);
-                            this.setState({items:newArray});
-                        }}
-                        />
-                    }
-                />
+                { (items.length === 0) ? 
+                    <NewsEmptyView/> :
+                    <FlatList 
+                        data={items}
+                        renderItem={
+                            ({item, index}) => 
+                            <NewsItemView 
+                            contentText={item} 
+                            onDeleteItem = {() => {
+                                Alert.alert(
+                                    'Delete',
+                                    'Delete this item?',
+                                    [
+                                        {text: 'Cancel', onPress: () => console.log('cancel pressed')},
+                                        {text: 'Delete', onPress: () => {
+                                            let newArray = [...items];
+                                            newArray.splice(index, 1);
+                                            this.setState({items:newArray});
+                                        }}
+                                    ]
+                                )  
+                                }
+                            }
+                            />
+                        }
+                    />
+                }
+                
             </View>        
         );
     }
