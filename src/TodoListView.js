@@ -52,11 +52,12 @@ class TodoListView extends Component {
                                     'Delete',
                                     'Delete this item?',
                                     [
-                                        {text: 'Cancel', onPress: () => console.log('cancel pressed')},
+                                        {text: 'Cancel', onPress: () => console.log('cancel pressed, action aborted')},
                                         {text: 'Delete', onPress: () => {
                                             let newArray = [...items];
                                             newArray.splice(index, 1);
                                             this.setState({items:newArray});
+                                            Alert.alert('Item Succesfully Deleted');
                                         }}
                                     ]
                                 )  
