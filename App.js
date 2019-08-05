@@ -1,11 +1,11 @@
 import React from 'react';
 import { StyleSheet, SafeAreaView } from 'react-native';
-import NewsListView from './src/NewsListView';
+import TodoListView from './src/TodoListView';
 
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
-      <NewsListView/>
+      <TodoListView/>
     </SafeAreaView>
   );
 }

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { View, TextInput, Button, StyleSheet } from 'react-native';
 
-class NewsInputView extends Component {
+class TodoInputView extends Component {
     constructor(props) {
         super(props);
     } 
@@ -47,4 +47,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default NewsInputView;
+export default TodoInputView;

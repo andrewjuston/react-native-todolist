@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-const NewsEmptyView = () => {
+const TodoEmptyView = () => {
     return (
         <View style={styles.container}>
             <Text style={styles.text}>Nothing to show here</Text>
@@ -22,4 +22,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default NewsEmptyView;
+export default TodoEmptyView;

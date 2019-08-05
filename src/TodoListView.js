@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import { View, Text, FlatList, StyleSheet, Alert } from 'react-native';
-import NewsInputView from './NewsInputView';
-import NewsItemView from './NewsItemView';
-import NewsEmptyView from './NewsEmptyView';
+import TodoInputView from './TodoInputView';
+import TodoItemView from './TodoItemView';
+import TodoEmptyView from './TodoEmptyView';
 
-class NewsListView extends Component {
+class TodoListView extends Component {
     constructor(props) {
         super(props);
         this.state={
@@ -34,18 +34,18 @@ class NewsListView extends Component {
         return (
             <View>
                 <Text style={styles.title}>To-Do List</Text>
-                <NewsInputView 
+                <TodoInputView 
                 pressHandler={this.onItemAdd} 
                 changeText={this.textChangeHandler}
                 textInputRef={this.inputRef}
                 />
                 { (items.length === 0) ? 
-                    <NewsEmptyView/> :
+                    <TodoEmptyView/> :
                     <FlatList 
                         data={items}
                         renderItem={
                             ({item, index}) => 
-                            <NewsItemView 
+                            <TodoItemView 
                             contentText={item} 
                             onDeleteItem = {() => {
                                 Alert.alert(
@@ -85,4 +85,4 @@ const styles = StyleSheet.create({
     },
   });
 
-export default NewsListView;
+export default TodoListView;

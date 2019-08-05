@@ -1,10 +1,11 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { View, Text, Button, Image, StyleSheet } from 'react-native';
 
-const NewsItemView = (props) => {
+const TodoItemView = (props) => {
     
     return (
      <View style={styles.container}>
+         <Image source={require('../assets/logo_babastudio.png')} style={styles.image}/>
          <Text style={styles.text}>{props.contentText}</Text>
          <Button 
          title={'Delete'} 
@@ -26,10 +27,20 @@ const styles = StyleSheet.create({
         borderColor: '#D3D3D3',
         borderWidth: 1.5,
         borderRadius: 15,
-        backgroundColor: '#DCDCDC'
+        backgroundColor: '#DCDCDC',
+        alignContent: 'center',
+        justifyContent: 'space-between',
+        flexWrap: 'wrap'
     },
     text:{
-        fontSize: 20,
+        fontSize: 18,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    image:{
+        width: 100,
+        height: 50,
+        resizeMode:'stretch'
     },
     button: {
         marginRight: 15,
@@ -37,4 +48,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default NewsItemView;
+export default TodoItemView;
